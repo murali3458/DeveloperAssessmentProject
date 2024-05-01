@@ -5,17 +5,16 @@ using DeveloperAssessmentProject.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Policy;
 
 namespace DeveloperAssessmentProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookSpController : ControllerBase
+    public class AuthorSpController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public BookSpController(AppDbContext context)
+        public AuthorSpController(AppDbContext context)
         {
             _context = context;
         }
@@ -25,16 +24,17 @@ namespace DeveloperAssessmentProject.Controllers
         {
             try
             {
+                var result = await _context.Books.FromSqlRaw("EXEC AuthorWiseListProcedure").ToListAsync();
 
-                var result = await _context.Books.FromSqlRaw("EXEC PublisherwiseProcedure")
-                                                    .ToListAsync();
+                //get the list without MLAcitation property. 
+                //if you want all the property just comment the below line.
                 var data = result.Select(x => new BussinesObject.BooksViewModel
                 {
                     Publisher = x.Publisher,
-                    AuthorFirstName = x.AuthorFirstName,
                     AuthorLastName = x.AuthorLastName,
-                    Title = x.Title,
-                    Price = x.Price
+                    AuthorFirstName = x.AuthorFirstName,
+                    Price = x.Price,
+                    Title = x.Title
 
                 }).ToList();
 
