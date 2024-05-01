@@ -1,0 +1,8 @@
+﻿@using BussinesObject;
+@model IEnumerable<BooksModel>
+
+
+@foreach(var res in Model)
+{
+    <p>@Html.Raw(@res.MLAcitation)</p>
+}
