@@ -14,6 +14,7 @@ namespace DeveloperAssessmentProject.Controllers
 
         public IActionResult Index()
         {
+            var books = _Context.Books;
             var list = _Context.Books.ToList();
 
             return View(list);

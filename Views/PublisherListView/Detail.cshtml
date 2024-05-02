@@ -1,0 +1,43 @@
+﻿@using BussinesObject
+@model BooksModel;
+
+<form id="MasterformDetail" asp-controller="PublisherListView"
+      asp-action="DetailRemove" asp-route-BookId="@Model.BooksId" method="post">
+    <div class="row">
+        <input type="hidden" asp-for="BooksId" />
+        <div class="row">
+            <div class="col-lg-4 mb-3">
+                <label asp-for="Publisher" class="form-label">Publisher</label>
+                <input type="text" class="form-control" asp-for="Publisher" readonly>
+            </div>
+            <div class="col-lg-4 mb-3">
+                <label asp-for="AuthorLastName" class="form-label">Author Last Name</label>
+                <input type="text" class="form-control" asp-for="AuthorLastName" readonly>
+            </div>
+            <div class="col-lg-4 mb-3">
+                <label asp-for="AuthorFirstName" class="form-label">Author First Name</label>
+                <input type="text" class="form-control" asp-for="AuthorFirstName" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 mb-3">
+                <label asp-for="Title" class="form-label">Title</label>
+                <input type="text" class="form-control" asp-for="Title" readonly>
+            </div>
+            <div class="col-lg-4 mb-3 ">
+                <label asp-for="Price" class="form-label">Price</label>
+                <input type="text" class="form-control" asp-for="Price" readonly>
+            </div>           
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" id="DeleteId" >Delete</button>
+    <a class="btn btn-primary" href="/PublisherListView">Cancel</a>
+</form>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="~/js/publisherwisesort.js" asp-append-version="true"></script>
