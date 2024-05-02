@@ -2,14 +2,11 @@
 @model IEnumerable<BooksModel>
 
 <div>
-    <h1>Book Details</h1>
+    <h1>Book CMS Style</h1>
 
     @foreach(var res in Model)
     {
-        <p><strong>Publisher:</strong> @res.Publisher</p>
-        <p><strong>Author:</strong> @res.AuthorLastName, @res.AuthorFirstName</p>
-        <p><strong>Title:</strong> <em>@res.Title</em></p>
-        <p><strong>Price:</strong> <em>@res.Price</em></p>
+        <p>@Html.Raw(res.CMScitation)</p>
     }
   
 </div>

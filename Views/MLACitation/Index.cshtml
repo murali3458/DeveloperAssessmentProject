@@ -1,7 +1,7 @@
 ﻿@using BussinesObject;
 @model IEnumerable<BooksModel>
 
-
+<h1>Book MLA Style</h1>
 @foreach(var res in Model)
 {
     <p>@Html.Raw(@res.MLAcitation)</p>

@@ -20,14 +20,12 @@ namespace DeveloperAssessmentProject.Controllers
         {
             _context = context;
         }
-        
+
 
         public IActionResult SaveData()
         {
-            foreach(var book in _books)
-            {
-                _context.Books.Add(book);
-            }
+
+            _context.Books.AddRange(_books);
             _context.SaveChanges();
 
             return Ok();
@@ -41,6 +39,6 @@ namespace DeveloperAssessmentProject.Controllers
 
         };
 
-        
+
     }
 }
